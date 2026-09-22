@@ -1,0 +1,5 @@
+switch_id,port,neighbour_id
+5,0,1
+5,1,2
+5,2,7
+5,3,8

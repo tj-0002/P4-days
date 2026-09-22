@@ -1,0 +1,104 @@
+# The Days side of milestone M4.
+#
+# The same shape the ns-3 scenario builds:
+#
+#   h1 --\                 /-- h3
+#         s5 -- s7 -- s6
+#   h2 --/       |     \--- h4
+#                s8
+#
+# Node ids are chosen so the hosts map onto the addresses the ns-3 side assigns:
+# host h becomes 10.0.0.h, and 10.0.0.0 is not assignable, so hosts start at 1.
+seed = 1000
+threading = "single"
+edges = [[1,5],[2,5],[3,6],[4,6],[5,7],[5,8],[6,7],[6,8]]
+hosts = [1, 2, 3, 4]
+log_path = "logs/m4/days"
+
+# 10 us on every link, matching the ns-3 side. Days had no propagation delay
+# reachable from a topology until this was wired in; without it the two
+# simulators are not modelling the same network.
+[link]
+    delay = {type = "Uniform", low = 0.00001, high = 0.00001}
+
+[switch]
+    port_rate = 1000000000   # 1 Gb/s in bits per second, matching the ns-3 links
+    capacity = 1000
+    weights = [1]
+    discipline = "FIFO"
+    drop = "TailDrop"
+    run_batch_size = 64
+
+[p4]
+    switches = [5, 6, 7, 8]
+    # The debug-free program. m4_compare/ is the same table and action with a
+    # register counter and two log_msg calls added; those run on every packet
+    # and cost 3.3 us a hop, so they belong in a debugging run, not this one.
+    program = "../p4-programs/m4_nodebug/m4_nodebug.json"
+    table = "MyIngress.flow_forward"
+    action = "MyIngress.forward"
+    export_tables_dir = "../experiments/p4sim-comparison/flowtables"
+    # On for the correctness comparison: the row is what ties a Days packet to
+    # the BMv2 trace. The overhead measurement turns it off, because a CSV
+    # write on the packet path is not part of what the pipeline costs.
+    log_events = true
+
+# two flows that share a source switch and a destination switch, so only the
+# per-flow decision can separate them
+[[flow]]
+    flow_type = "PacketDistribution"
+    # Fixed explicitly, and deliberately past 16 bits: flow_id rides in the port
+    # pair, and an id below 65536 leaves the source port at zero, which ns-3
+    # reads as "any port" and replaces with an ephemeral one. 0x10001 gives
+    # source port 1, destination port 1.
+    flow_id = 65537
+    graph = [[1, 3]]
+    [flow.traffic]
+        initial_delay = 1.0
+        # 10 us between packets. One 1042-byte frame takes 8.336 us on a 1 Gb/s
+        # link, so each host offers 1.2x what its own access link can carry --
+        # no, it does not: 10 us is above 8.336, so the access link is not
+        # saturated and only the shared s5->s8 link is. The two flows together
+        # offer 200 kpps into a port that serves 120 kpps, which is 167 % and
+        # fills the buffer.
+        #
+        # Do not go below 8.336 us. Under that the access link saturates too,
+        # both flows leave their hosts on the same departure grid, and which of
+        # them holds the shared buffer is then decided by the order two events
+        # at the same instant happen to be processed in. Days and ns-3 order
+        # them differently, so the per-flow split stops being comparable --
+        # see the load sweep in P4-Days-진행정리.md §3.6.
+        duration = 0.019995
+        arr_dist = {type = "Uniform", low = 0.00001, high = 0.00001}
+        # The ns-3 frame, not its payload: 1000 bytes of UDP payload plus 8 UDP,
+        # 20 IPv4 and 14 Ethernet. Days charges packet.size against the port, so
+        # counting only the payload would give Days a 4 % faster link than ns-3
+        # and put the two on different sides of saturation at 100 % load.
+        pkt_size_dist = {type = "Uniform", low = 1042, high = 1042}
+
+[[flow]]
+    flow_type = "PacketDistribution"
+    flow_id = 65538
+    graph = [[2, 4]]
+    [flow.traffic]
+        initial_delay = 1.0
+        # 10 us between packets. One 1042-byte frame takes 8.336 us on a 1 Gb/s
+        # link, so each host offers 1.2x what its own access link can carry --
+        # no, it does not: 10 us is above 8.336, so the access link is not
+        # saturated and only the shared s5->s8 link is. The two flows together
+        # offer 200 kpps into a port that serves 120 kpps, which is 167 % and
+        # fills the buffer.
+        #
+        # Do not go below 8.336 us. Under that the access link saturates too,
+        # both flows leave their hosts on the same departure grid, and which of
+        # them holds the shared buffer is then decided by the order two events
+        # at the same instant happen to be processed in. Days and ns-3 order
+        # them differently, so the per-flow split stops being comparable --
+        # see the load sweep in P4-Days-진행정리.md §3.6.
+        duration = 0.019995
+        arr_dist = {type = "Uniform", low = 0.00001, high = 0.00001}
+        # The ns-3 frame, not its payload: 1000 bytes of UDP payload plus 8 UDP,
+        # 20 IPv4 and 14 Ethernet. Days charges packet.size against the port, so
+        # counting only the payload would give Days a 4 % faster link than ns-3
+        # and put the two on different sides of saturation at 100 % load.
+        pkt_size_dist = {type = "Uniform", low = 1042, high = 1042}

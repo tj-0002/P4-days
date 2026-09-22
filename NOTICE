@@ -1,0 +1,19 @@
+P4-Days
+Copyright (C) 2026 Taejoon Lee
+
+This work extends Days, a discrete-event network simulator developed by the
+iQua research group at the University of Toronto, which is licensed under the
+GNU Affero General Public License version 3. Days remains the copyright of its
+authors; the fork carrying this work is tracked as the `days/` submodule and
+keeps its own LICENSE and history.
+
+This repository is licensed under the same terms (AGPL-3.0-or-later) so that
+the documentation, experiment scripts and P4 programs here stay usable together
+with the simulator they drive.
+
+The manuscript under paper/ is copyright the author and is not covered by the
+AGPL-3.0 licence of the software.
+
+Third-party components used but not redistributed here:
+  - behavioral-model (BMv2), Apache License 2.0, https://github.com/p4lang/behavioral-model
+  - ns-3 and the p4sim contrib module, used only as the comparison baseline

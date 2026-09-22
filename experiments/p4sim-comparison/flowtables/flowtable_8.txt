@@ -1,0 +1,5 @@
+table_set_default MyIngress.flow_forward MyIngress.drop
+table_add MyIngress.flow_forward MyIngress.forward 0x0a000002 0x0a000004 0x0001 0x0002 => 1
+table_add MyIngress.flow_forward MyIngress.forward 0x0a000001 0x0a000003 0x0001 0x0001 => 1
+table_add MyIngress.flow_forward MyIngress.forward 0x0a000003 0x0a000001 0x0001 0x0001 => 0
+table_add MyIngress.flow_forward MyIngress.forward 0x0a000004 0x0a000002 0x0002 0x0001 => 0

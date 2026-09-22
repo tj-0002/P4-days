@@ -1,0 +1,31 @@
+# Handoff section 10, Test 5 — multiple P4 switches.
+# Host 0 -- P4 switch 1 -- P4 switch 2 -- Host 3.
+seed = 1000
+edges = [[0, 1], [1, 2], [2, 3]]
+hosts = [0, 3]
+log_path = "logs/correctness/test5"
+
+[switch]
+    port_rate = 800000
+    capacity = 100
+    weights = [1]
+    discipline = "FIFO"
+    drop = "TailDrop"
+    run_batch_size = 64
+
+[p4]
+    switches = [1, 2]
+    program = "../p4-programs/test4_register/test4_register.json"
+    table = "MyIngress.flow_forward"
+    action = "MyIngress.forward"
+    bmv2_trace_dir = "logs/correctness/test5/bmv2"
+
+[[flow]]
+    flow_type = "PacketDistribution"
+    graph = [[0, 3]]
+
+    [flow.traffic]
+        initial_delay = 1.0
+        duration = 10.0
+        arr_dist = {type = "Uniform", low = 1, high = 1}
+        pkt_size_dist = {type = "Uniform", low = 1000, high = 1000}

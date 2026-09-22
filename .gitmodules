@@ -1,0 +1,4 @@
+[submodule "days"]
+	path = days
+	url = https://github.com/tj-0002/days.git
+	branch = feature/bmv2-integration

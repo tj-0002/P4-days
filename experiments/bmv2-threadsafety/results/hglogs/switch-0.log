@@ -1,0 +1,700 @@
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.593] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Parser 'parser': start
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.605] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Parser 'parser' entering state 'start'
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.606] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Extracting header 'ethernet'
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.609] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Parser state 'start': key is 0800
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.610] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Bytes parsed: 14
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.610] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.610] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Extracting header 'ipv4'
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.611] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.611] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Bytes parsed: 34
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.612] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Parser 'parser': end
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.613] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Pipeline 'ingress': start
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.616] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(87) Condition "hdr.ipv4.isValid()" (node_2) is true
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.617] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Applying table 'tbl_log_probe89'
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.619] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Looking up key:
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.620] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Table 'tbl_log_probe89': miss
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.620] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Action entry is log_probe89 - 
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.622] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Action log_probe89
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.623] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(89) Primitive shared_counters.read(n, 32w0)
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.625] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Read register 'shared_counters' at index 0 read value 0
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.626] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(90) Primitive n + 1
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.627] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(90) Primitive shared_counters.write(32w0, n + 1)
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.629] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 1
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.629] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.dstAddr
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.630] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.ttl
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.630] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(93) Primitive n
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.634] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(92) Primitive             log_msg(\"INGRESS dst={} ttl={} counter={}\",
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.636] [bmv2] [I] [thread 70266] INGRESS dst=167837953 ttl=32 counter=0
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.637] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Applying table 'MyIngress.ipv4_exact'
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.638] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Looking up key:
+t=0 sw=0 flow=0 pkt=0 | * hdr.ipv4.dstAddr    : 0a010101
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.640] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Table 'MyIngress.ipv4_exact': hit with handle 0
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.640] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Dumping entry 0
+t=0 sw=0 flow=0 pkt=0 | Match key:
+t=0 sw=0 flow=0 pkt=0 | * hdr.ipv4.dstAddr    : EXACT     0a010101
+t=0 sw=0 flow=0 pkt=0 | Action entry: MyIngress.forward - 0,
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.641] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Action entry is MyIngress.forward - 0,
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.641] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Action MyIngress.forward
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.641] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(70) Primitive standard_metadata.egress_spec = port
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.641] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(71) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.642] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Applying table 'tbl_log_probe95'
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.642] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Looking up key:
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.643] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Table 'tbl_log_probe95': miss
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.643] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Action entry is log_probe95 - 
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.643] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Action log_probe95
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.643] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.644] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.644] [bmv2] [I] [thread 70266] INGRESS decided egress_spec=0
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.645] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Pipeline 'ingress': end
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.646] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Pipeline 'egress': start
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.646] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(103) Condition "hdr.ipv4.isValid()" (node_8) is true
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.646] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Applying table 'tbl_log_probe106'
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.647] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Looking up key:
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.647] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Table 'tbl_log_probe106': miss
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.647] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Action entry is log_probe106 - 
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.648] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Action log_probe106
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.648] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(106) Primitive shared_counters.read(n, 32w0)
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.648] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Read register 'shared_counters' at index 0 read value 1
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.648] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(107) Primitive n + 1
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.649] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(107) Primitive shared_counters.write(32w0, n + 1)
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.649] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 2
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.649] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(111) Primitive shared_counters.read(e, 32w1)
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.649] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Read register 'shared_counters' at index 1 read value 0
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.650] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(112) Primitive e + 1
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.650] [bmv2] [T] [thread 70266] [0.0] [cxt 0] log_probe.p4(112) Primitive shared_counters.write(32w1, e + 1)
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.650] [bmv2] [T] [thread 70266] [0.0] [cxt 0] Wrote register 'shared_counters' at index 1 with value 1
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.651] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Pipeline 'egress': end
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.651] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Deparser 'deparser': start
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.653] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Deparsing header 'ethernet'
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.653] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Deparsing header 'ipv4'
+t=0 sw=0 flow=0 pkt=0 | [12:13:15.654] [bmv2] [D] [thread 70266] [0.0] [cxt 0] Deparser 'deparser': end
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.656] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Parser 'parser': start
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.658] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Parser 'parser' entering state 'start'
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.659] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Extracting header 'ethernet'
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.660] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Parser state 'start': key is 0800
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.660] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Bytes parsed: 14
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.660] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.660] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Extracting header 'ipv4'
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.661] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.661] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Bytes parsed: 34
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.661] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Parser 'parser': end
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.661] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Pipeline 'ingress': start
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.662] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(87) Condition "hdr.ipv4.isValid()" (node_2) is true
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.662] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Applying table 'tbl_log_probe89'
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.662] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Looking up key:
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.662] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Table 'tbl_log_probe89': miss
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.663] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Action entry is log_probe89 - 
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.663] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Action log_probe89
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.663] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(89) Primitive shared_counters.read(n, 32w0)
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.663] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Read register 'shared_counters' at index 0 read value 2
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.664] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(90) Primitive n + 1
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.664] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(90) Primitive shared_counters.write(32w0, n + 1)
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.664] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 3
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.664] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.dstAddr
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.665] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.ttl
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.665] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(93) Primitive n
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.665] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(92) Primitive             log_msg(\"INGRESS dst={} ttl={} counter={}\",
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.665] [bmv2] [I] [thread 70266] INGRESS dst=167837954 ttl=33 counter=2
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.666] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Applying table 'MyIngress.ipv4_exact'
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.666] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Looking up key:
+t=0.001 sw=0 flow=1 pkt=1 | * hdr.ipv4.dstAddr    : 0a010102
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.666] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Table 'MyIngress.ipv4_exact': hit with handle 1
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.667] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Dumping entry 1
+t=0.001 sw=0 flow=1 pkt=1 | Match key:
+t=0.001 sw=0 flow=1 pkt=1 | * hdr.ipv4.dstAddr    : EXACT     0a010102
+t=0.001 sw=0 flow=1 pkt=1 | Action entry: MyIngress.forward - 1,
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.667] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Action entry is MyIngress.forward - 1,
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.668] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Action MyIngress.forward
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.668] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(70) Primitive standard_metadata.egress_spec = port
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.668] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(71) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.668] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Applying table 'tbl_log_probe95'
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.669] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Looking up key:
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.669] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Table 'tbl_log_probe95': miss
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.669] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Action entry is log_probe95 - 
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.669] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Action log_probe95
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.670] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.670] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.670] [bmv2] [I] [thread 70266] INGRESS decided egress_spec=1
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.671] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Pipeline 'ingress': end
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.671] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Pipeline 'egress': start
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.672] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(103) Condition "hdr.ipv4.isValid()" (node_8) is true
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.672] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Applying table 'tbl_log_probe106'
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.672] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Looking up key:
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.672] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Table 'tbl_log_probe106': miss
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.673] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Action entry is log_probe106 - 
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.673] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Action log_probe106
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.673] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(106) Primitive shared_counters.read(n, 32w0)
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.673] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Read register 'shared_counters' at index 0 read value 3
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.674] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(107) Primitive n + 1
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.674] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(107) Primitive shared_counters.write(32w0, n + 1)
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.674] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 4
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.674] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(111) Primitive shared_counters.read(e, 32w1)
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.675] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Read register 'shared_counters' at index 1 read value 1
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.675] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(112) Primitive e + 1
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.675] [bmv2] [T] [thread 70266] [1.0] [cxt 0] log_probe.p4(112) Primitive shared_counters.write(32w1, e + 1)
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.675] [bmv2] [T] [thread 70266] [1.0] [cxt 0] Wrote register 'shared_counters' at index 1 with value 2
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.676] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Pipeline 'egress': end
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.676] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Deparser 'deparser': start
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.676] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Deparsing header 'ethernet'
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.676] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Deparsing header 'ipv4'
+t=0.001 sw=0 flow=1 pkt=1 | [12:13:15.677] [bmv2] [D] [thread 70266] [1.0] [cxt 0] Deparser 'deparser': end
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.677] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Parser 'parser': start
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.678] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Parser 'parser' entering state 'start'
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.678] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Extracting header 'ethernet'
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.678] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Parser state 'start': key is 0800
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.679] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Bytes parsed: 14
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.679] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.679] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Extracting header 'ipv4'
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.679] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.679] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Bytes parsed: 34
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.680] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Parser 'parser': end
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.680] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Pipeline 'ingress': start
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.680] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(87) Condition "hdr.ipv4.isValid()" (node_2) is true
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.680] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Applying table 'tbl_log_probe89'
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.681] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Looking up key:
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.681] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Table 'tbl_log_probe89': miss
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.681] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Action entry is log_probe89 - 
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.681] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Action log_probe89
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.682] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(89) Primitive shared_counters.read(n, 32w0)
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.682] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Read register 'shared_counters' at index 0 read value 4
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.682] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(90) Primitive n + 1
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.682] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(90) Primitive shared_counters.write(32w0, n + 1)
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.683] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 5
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.683] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.dstAddr
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.684] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.ttl
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.684] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(93) Primitive n
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.684] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(92) Primitive             log_msg(\"INGRESS dst={} ttl={} counter={}\",
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.684] [bmv2] [I] [thread 70266] INGRESS dst=167837953 ttl=34 counter=4
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.685] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Applying table 'MyIngress.ipv4_exact'
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.685] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Looking up key:
+t=0.002 sw=0 flow=0 pkt=2 | * hdr.ipv4.dstAddr    : 0a010101
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.685] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Table 'MyIngress.ipv4_exact': hit with handle 0
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.686] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Dumping entry 0
+t=0.002 sw=0 flow=0 pkt=2 | Match key:
+t=0.002 sw=0 flow=0 pkt=2 | * hdr.ipv4.dstAddr    : EXACT     0a010101
+t=0.002 sw=0 flow=0 pkt=2 | Action entry: MyIngress.forward - 0,
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.686] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Action entry is MyIngress.forward - 0,
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.687] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Action MyIngress.forward
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.687] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(70) Primitive standard_metadata.egress_spec = port
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.687] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(71) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.687] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Applying table 'tbl_log_probe95'
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.688] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Looking up key:
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.688] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Table 'tbl_log_probe95': miss
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.688] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Action entry is log_probe95 - 
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.688] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Action log_probe95
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.689] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.689] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.689] [bmv2] [I] [thread 70266] INGRESS decided egress_spec=0
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.690] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Pipeline 'ingress': end
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.690] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Pipeline 'egress': start
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.690] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(103) Condition "hdr.ipv4.isValid()" (node_8) is true
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.690] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Applying table 'tbl_log_probe106'
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.691] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Looking up key:
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.691] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Table 'tbl_log_probe106': miss
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.691] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Action entry is log_probe106 - 
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.691] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Action log_probe106
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.691] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(106) Primitive shared_counters.read(n, 32w0)
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.692] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Read register 'shared_counters' at index 0 read value 5
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.692] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(107) Primitive n + 1
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.692] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(107) Primitive shared_counters.write(32w0, n + 1)
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.693] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 6
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.693] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(111) Primitive shared_counters.read(e, 32w1)
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.693] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Read register 'shared_counters' at index 1 read value 2
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.693] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(112) Primitive e + 1
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.694] [bmv2] [T] [thread 70266] [2.0] [cxt 0] log_probe.p4(112) Primitive shared_counters.write(32w1, e + 1)
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.694] [bmv2] [T] [thread 70266] [2.0] [cxt 0] Wrote register 'shared_counters' at index 1 with value 3
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.695] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Pipeline 'egress': end
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.695] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Deparser 'deparser': start
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.695] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Deparsing header 'ethernet'
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.695] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Deparsing header 'ipv4'
+t=0.002 sw=0 flow=0 pkt=2 | [12:13:15.696] [bmv2] [D] [thread 70266] [2.0] [cxt 0] Deparser 'deparser': end
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.696] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Parser 'parser': start
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.696] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Parser 'parser' entering state 'start'
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.697] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Extracting header 'ethernet'
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.697] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Parser state 'start': key is 0800
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.697] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Bytes parsed: 14
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.697] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.698] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Extracting header 'ipv4'
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.698] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.698] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Bytes parsed: 34
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.698] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Parser 'parser': end
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.699] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Pipeline 'ingress': start
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.699] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(87) Condition "hdr.ipv4.isValid()" (node_2) is true
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.699] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Applying table 'tbl_log_probe89'
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.699] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Looking up key:
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.700] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Table 'tbl_log_probe89': miss
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.700] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Action entry is log_probe89 - 
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.700] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Action log_probe89
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.700] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(89) Primitive shared_counters.read(n, 32w0)
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.701] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Read register 'shared_counters' at index 0 read value 6
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.701] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(90) Primitive n + 1
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.701] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(90) Primitive shared_counters.write(32w0, n + 1)
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.701] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 7
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.702] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.dstAddr
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.702] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.ttl
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.702] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(93) Primitive n
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.702] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(92) Primitive             log_msg(\"INGRESS dst={} ttl={} counter={}\",
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.703] [bmv2] [I] [thread 70266] INGRESS dst=167837954 ttl=35 counter=6
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.703] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Applying table 'MyIngress.ipv4_exact'
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.703] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Looking up key:
+t=0.003 sw=0 flow=1 pkt=3 | * hdr.ipv4.dstAddr    : 0a010102
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.704] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Table 'MyIngress.ipv4_exact': hit with handle 1
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.704] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Dumping entry 1
+t=0.003 sw=0 flow=1 pkt=3 | Match key:
+t=0.003 sw=0 flow=1 pkt=3 | * hdr.ipv4.dstAddr    : EXACT     0a010102
+t=0.003 sw=0 flow=1 pkt=3 | Action entry: MyIngress.forward - 1,
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.705] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Action entry is MyIngress.forward - 1,
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.705] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Action MyIngress.forward
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.705] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(70) Primitive standard_metadata.egress_spec = port
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.706] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(71) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.706] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Applying table 'tbl_log_probe95'
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.706] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Looking up key:
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.707] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Table 'tbl_log_probe95': miss
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.707] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Action entry is log_probe95 - 
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.707] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Action log_probe95
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.707] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.708] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.708] [bmv2] [I] [thread 70266] INGRESS decided egress_spec=1
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.708] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Pipeline 'ingress': end
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.708] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Pipeline 'egress': start
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.709] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(103) Condition "hdr.ipv4.isValid()" (node_8) is true
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.709] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Applying table 'tbl_log_probe106'
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.709] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Looking up key:
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.709] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Table 'tbl_log_probe106': miss
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.710] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Action entry is log_probe106 - 
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.710] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Action log_probe106
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.710] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(106) Primitive shared_counters.read(n, 32w0)
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.710] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Read register 'shared_counters' at index 0 read value 7
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.711] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(107) Primitive n + 1
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.711] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(107) Primitive shared_counters.write(32w0, n + 1)
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.711] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 8
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.711] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(111) Primitive shared_counters.read(e, 32w1)
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.712] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Read register 'shared_counters' at index 1 read value 3
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.712] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(112) Primitive e + 1
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.712] [bmv2] [T] [thread 70266] [3.0] [cxt 0] log_probe.p4(112) Primitive shared_counters.write(32w1, e + 1)
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.713] [bmv2] [T] [thread 70266] [3.0] [cxt 0] Wrote register 'shared_counters' at index 1 with value 4
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.713] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Pipeline 'egress': end
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.713] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Deparser 'deparser': start
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.713] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Deparsing header 'ethernet'
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.714] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Deparsing header 'ipv4'
+t=0.003 sw=0 flow=1 pkt=3 | [12:13:15.714] [bmv2] [D] [thread 70266] [3.0] [cxt 0] Deparser 'deparser': end
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.715] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Parser 'parser': start
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.715] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Parser 'parser' entering state 'start'
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.715] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Extracting header 'ethernet'
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.716] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Parser state 'start': key is 0800
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.716] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Bytes parsed: 14
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.716] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.716] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Extracting header 'ipv4'
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.717] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.717] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Bytes parsed: 34
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.717] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Parser 'parser': end
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.717] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Pipeline 'ingress': start
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.718] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(87) Condition "hdr.ipv4.isValid()" (node_2) is true
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.718] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Applying table 'tbl_log_probe89'
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.718] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Looking up key:
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.718] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Table 'tbl_log_probe89': miss
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.719] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Action entry is log_probe89 - 
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.719] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Action log_probe89
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.719] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(89) Primitive shared_counters.read(n, 32w0)
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.719] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Read register 'shared_counters' at index 0 read value 8
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.720] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(90) Primitive n + 1
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.720] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(90) Primitive shared_counters.write(32w0, n + 1)
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.720] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 9
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.720] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.dstAddr
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.721] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.ttl
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.721] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(93) Primitive n
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.721] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(92) Primitive             log_msg(\"INGRESS dst={} ttl={} counter={}\",
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.721] [bmv2] [I] [thread 70266] INGRESS dst=167837953 ttl=36 counter=8
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.722] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Applying table 'MyIngress.ipv4_exact'
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.722] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Looking up key:
+t=0.004 sw=0 flow=0 pkt=4 | * hdr.ipv4.dstAddr    : 0a010101
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.722] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Table 'MyIngress.ipv4_exact': hit with handle 0
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.723] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Dumping entry 0
+t=0.004 sw=0 flow=0 pkt=4 | Match key:
+t=0.004 sw=0 flow=0 pkt=4 | * hdr.ipv4.dstAddr    : EXACT     0a010101
+t=0.004 sw=0 flow=0 pkt=4 | Action entry: MyIngress.forward - 0,
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.723] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Action entry is MyIngress.forward - 0,
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.724] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Action MyIngress.forward
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.724] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(70) Primitive standard_metadata.egress_spec = port
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.724] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(71) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.724] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Applying table 'tbl_log_probe95'
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.725] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Looking up key:
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.725] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Table 'tbl_log_probe95': miss
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.726] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Action entry is log_probe95 - 
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.726] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Action log_probe95
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.726] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.726] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.727] [bmv2] [I] [thread 70266] INGRESS decided egress_spec=0
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.727] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Pipeline 'ingress': end
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.727] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Pipeline 'egress': start
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.727] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(103) Condition "hdr.ipv4.isValid()" (node_8) is true
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.728] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Applying table 'tbl_log_probe106'
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.728] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Looking up key:
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.728] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Table 'tbl_log_probe106': miss
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.728] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Action entry is log_probe106 - 
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.729] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Action log_probe106
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.729] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(106) Primitive shared_counters.read(n, 32w0)
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.729] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Read register 'shared_counters' at index 0 read value 9
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.729] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(107) Primitive n + 1
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.730] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(107) Primitive shared_counters.write(32w0, n + 1)
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.730] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 10
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.730] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(111) Primitive shared_counters.read(e, 32w1)
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.731] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Read register 'shared_counters' at index 1 read value 4
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.731] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(112) Primitive e + 1
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.731] [bmv2] [T] [thread 70266] [4.0] [cxt 0] log_probe.p4(112) Primitive shared_counters.write(32w1, e + 1)
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.731] [bmv2] [T] [thread 70266] [4.0] [cxt 0] Wrote register 'shared_counters' at index 1 with value 5
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.732] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Pipeline 'egress': end
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.732] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Deparser 'deparser': start
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.732] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Deparsing header 'ethernet'
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.732] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Deparsing header 'ipv4'
+t=0.004 sw=0 flow=0 pkt=4 | [12:13:15.733] [bmv2] [D] [thread 70266] [4.0] [cxt 0] Deparser 'deparser': end
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.733] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Parser 'parser': start
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.733] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Parser 'parser' entering state 'start'
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.734] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Extracting header 'ethernet'
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.734] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Parser state 'start': key is 0800
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.734] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Bytes parsed: 14
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.734] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.735] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Extracting header 'ipv4'
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.735] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.735] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Bytes parsed: 34
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.736] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Parser 'parser': end
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.736] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Pipeline 'ingress': start
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.736] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(87) Condition "hdr.ipv4.isValid()" (node_2) is true
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.736] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Applying table 'tbl_log_probe89'
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.737] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Looking up key:
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.737] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Table 'tbl_log_probe89': miss
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.737] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Action entry is log_probe89 - 
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.737] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Action log_probe89
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.738] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(89) Primitive shared_counters.read(n, 32w0)
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.738] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Read register 'shared_counters' at index 0 read value 10
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.738] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(90) Primitive n + 1
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.738] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(90) Primitive shared_counters.write(32w0, n + 1)
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.739] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 11
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.739] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.dstAddr
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.739] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.ttl
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.740] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(93) Primitive n
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.740] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(92) Primitive             log_msg(\"INGRESS dst={} ttl={} counter={}\",
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.740] [bmv2] [I] [thread 70266] INGRESS dst=167837954 ttl=37 counter=10
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.740] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Applying table 'MyIngress.ipv4_exact'
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.741] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Looking up key:
+t=0.005 sw=0 flow=1 pkt=5 | * hdr.ipv4.dstAddr    : 0a010102
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.741] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Table 'MyIngress.ipv4_exact': hit with handle 1
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.741] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Dumping entry 1
+t=0.005 sw=0 flow=1 pkt=5 | Match key:
+t=0.005 sw=0 flow=1 pkt=5 | * hdr.ipv4.dstAddr    : EXACT     0a010102
+t=0.005 sw=0 flow=1 pkt=5 | Action entry: MyIngress.forward - 1,
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.742] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Action entry is MyIngress.forward - 1,
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.742] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Action MyIngress.forward
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.742] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(70) Primitive standard_metadata.egress_spec = port
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.743] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(71) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.743] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Applying table 'tbl_log_probe95'
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.743] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Looking up key:
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.743] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Table 'tbl_log_probe95': miss
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.744] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Action entry is log_probe95 - 
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.744] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Action log_probe95
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.744] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.744] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.745] [bmv2] [I] [thread 70266] INGRESS decided egress_spec=1
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.745] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Pipeline 'ingress': end
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.746] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Pipeline 'egress': start
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.746] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(103) Condition "hdr.ipv4.isValid()" (node_8) is true
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.746] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Applying table 'tbl_log_probe106'
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.746] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Looking up key:
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.747] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Table 'tbl_log_probe106': miss
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.747] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Action entry is log_probe106 - 
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.747] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Action log_probe106
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.747] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(106) Primitive shared_counters.read(n, 32w0)
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.748] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Read register 'shared_counters' at index 0 read value 11
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.748] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(107) Primitive n + 1
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.748] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(107) Primitive shared_counters.write(32w0, n + 1)
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.748] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 12
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.749] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(111) Primitive shared_counters.read(e, 32w1)
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.749] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Read register 'shared_counters' at index 1 read value 5
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.749] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(112) Primitive e + 1
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.750] [bmv2] [T] [thread 70266] [5.0] [cxt 0] log_probe.p4(112) Primitive shared_counters.write(32w1, e + 1)
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.750] [bmv2] [T] [thread 70266] [5.0] [cxt 0] Wrote register 'shared_counters' at index 1 with value 6
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.750] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Pipeline 'egress': end
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.750] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Deparser 'deparser': start
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.751] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Deparsing header 'ethernet'
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.751] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Deparsing header 'ipv4'
+t=0.005 sw=0 flow=1 pkt=5 | [12:13:15.751] [bmv2] [D] [thread 70266] [5.0] [cxt 0] Deparser 'deparser': end
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.752] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Parser 'parser': start
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.752] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Parser 'parser' entering state 'start'
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.752] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Extracting header 'ethernet'
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.752] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Parser state 'start': key is 0800
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.753] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Bytes parsed: 14
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.753] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.753] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Extracting header 'ipv4'
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.753] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.754] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Bytes parsed: 34
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.754] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Parser 'parser': end
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.754] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Pipeline 'ingress': start
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.754] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(87) Condition "hdr.ipv4.isValid()" (node_2) is true
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.754] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Applying table 'tbl_log_probe89'
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.755] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Looking up key:
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.755] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Table 'tbl_log_probe89': miss
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.756] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Action entry is log_probe89 - 
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.756] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Action log_probe89
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.756] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(89) Primitive shared_counters.read(n, 32w0)
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.756] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Read register 'shared_counters' at index 0 read value 12
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.757] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(90) Primitive n + 1
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.757] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(90) Primitive shared_counters.write(32w0, n + 1)
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.757] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 13
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.757] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.dstAddr
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.758] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.ttl
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.758] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(93) Primitive n
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.758] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(92) Primitive             log_msg(\"INGRESS dst={} ttl={} counter={}\",
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.758] [bmv2] [I] [thread 70266] INGRESS dst=167837953 ttl=38 counter=12
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.759] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Applying table 'MyIngress.ipv4_exact'
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.759] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Looking up key:
+t=0.006 sw=0 flow=0 pkt=6 | * hdr.ipv4.dstAddr    : 0a010101
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.759] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Table 'MyIngress.ipv4_exact': hit with handle 0
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.760] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Dumping entry 0
+t=0.006 sw=0 flow=0 pkt=6 | Match key:
+t=0.006 sw=0 flow=0 pkt=6 | * hdr.ipv4.dstAddr    : EXACT     0a010101
+t=0.006 sw=0 flow=0 pkt=6 | Action entry: MyIngress.forward - 0,
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.760] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Action entry is MyIngress.forward - 0,
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.761] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Action MyIngress.forward
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.761] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(70) Primitive standard_metadata.egress_spec = port
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.761] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(71) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.761] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Applying table 'tbl_log_probe95'
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.762] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Looking up key:
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.762] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Table 'tbl_log_probe95': miss
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.762] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Action entry is log_probe95 - 
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.762] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Action log_probe95
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.763] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.763] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.763] [bmv2] [I] [thread 70266] INGRESS decided egress_spec=0
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.763] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Pipeline 'ingress': end
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.764] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Pipeline 'egress': start
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.764] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(103) Condition "hdr.ipv4.isValid()" (node_8) is true
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.765] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Applying table 'tbl_log_probe106'
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.765] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Looking up key:
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.765] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Table 'tbl_log_probe106': miss
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.765] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Action entry is log_probe106 - 
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.766] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Action log_probe106
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.766] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(106) Primitive shared_counters.read(n, 32w0)
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.766] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Read register 'shared_counters' at index 0 read value 13
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.766] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(107) Primitive n + 1
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.767] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(107) Primitive shared_counters.write(32w0, n + 1)
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.767] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 14
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.767] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(111) Primitive shared_counters.read(e, 32w1)
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.767] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Read register 'shared_counters' at index 1 read value 6
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.768] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(112) Primitive e + 1
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.768] [bmv2] [T] [thread 70266] [6.0] [cxt 0] log_probe.p4(112) Primitive shared_counters.write(32w1, e + 1)
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.768] [bmv2] [T] [thread 70266] [6.0] [cxt 0] Wrote register 'shared_counters' at index 1 with value 7
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.769] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Pipeline 'egress': end
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.769] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Deparser 'deparser': start
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.769] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Deparsing header 'ethernet'
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.769] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Deparsing header 'ipv4'
+t=0.006 sw=0 flow=0 pkt=6 | [12:13:15.770] [bmv2] [D] [thread 70266] [6.0] [cxt 0] Deparser 'deparser': end
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.770] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Parser 'parser': start
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.770] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Parser 'parser' entering state 'start'
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.771] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Extracting header 'ethernet'
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.771] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Parser state 'start': key is 0800
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.771] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Bytes parsed: 14
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.771] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.771] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Extracting header 'ipv4'
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.772] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.772] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Bytes parsed: 34
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.772] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Parser 'parser': end
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.772] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Pipeline 'ingress': start
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.773] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(87) Condition "hdr.ipv4.isValid()" (node_2) is true
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.773] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Applying table 'tbl_log_probe89'
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.773] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Looking up key:
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.773] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Table 'tbl_log_probe89': miss
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.774] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Action entry is log_probe89 - 
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.774] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Action log_probe89
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.775] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(89) Primitive shared_counters.read(n, 32w0)
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.775] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Read register 'shared_counters' at index 0 read value 14
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.775] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(90) Primitive n + 1
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.775] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(90) Primitive shared_counters.write(32w0, n + 1)
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.776] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 15
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.776] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.dstAddr
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.776] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.ttl
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.776] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(93) Primitive n
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.777] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(92) Primitive             log_msg(\"INGRESS dst={} ttl={} counter={}\",
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.777] [bmv2] [I] [thread 70266] INGRESS dst=167837954 ttl=39 counter=14
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.777] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Applying table 'MyIngress.ipv4_exact'
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.778] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Looking up key:
+t=0.007 sw=0 flow=1 pkt=7 | * hdr.ipv4.dstAddr    : 0a010102
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.778] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Table 'MyIngress.ipv4_exact': hit with handle 1
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.778] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Dumping entry 1
+t=0.007 sw=0 flow=1 pkt=7 | Match key:
+t=0.007 sw=0 flow=1 pkt=7 | * hdr.ipv4.dstAddr    : EXACT     0a010102
+t=0.007 sw=0 flow=1 pkt=7 | Action entry: MyIngress.forward - 1,
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.779] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Action entry is MyIngress.forward - 1,
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.779] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Action MyIngress.forward
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.779] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(70) Primitive standard_metadata.egress_spec = port
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.780] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(71) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.780] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Applying table 'tbl_log_probe95'
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.780] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Looking up key:
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.780] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Table 'tbl_log_probe95': miss
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.781] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Action entry is log_probe95 - 
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.781] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Action log_probe95
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.781] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.781] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.782] [bmv2] [I] [thread 70266] INGRESS decided egress_spec=1
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.782] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Pipeline 'ingress': end
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.782] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Pipeline 'egress': start
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.782] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(103) Condition "hdr.ipv4.isValid()" (node_8) is true
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.783] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Applying table 'tbl_log_probe106'
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.783] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Looking up key:
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.784] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Table 'tbl_log_probe106': miss
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.784] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Action entry is log_probe106 - 
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.784] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Action log_probe106
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.784] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(106) Primitive shared_counters.read(n, 32w0)
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.785] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Read register 'shared_counters' at index 0 read value 15
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.785] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(107) Primitive n + 1
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.785] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(107) Primitive shared_counters.write(32w0, n + 1)
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.785] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 16
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.786] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(111) Primitive shared_counters.read(e, 32w1)
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.786] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Read register 'shared_counters' at index 1 read value 7
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.786] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(112) Primitive e + 1
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.786] [bmv2] [T] [thread 70266] [7.0] [cxt 0] log_probe.p4(112) Primitive shared_counters.write(32w1, e + 1)
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.787] [bmv2] [T] [thread 70266] [7.0] [cxt 0] Wrote register 'shared_counters' at index 1 with value 8
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.787] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Pipeline 'egress': end
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.787] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Deparser 'deparser': start
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.788] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Deparsing header 'ethernet'
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.788] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Deparsing header 'ipv4'
+t=0.007 sw=0 flow=1 pkt=7 | [12:13:15.788] [bmv2] [D] [thread 70266] [7.0] [cxt 0] Deparser 'deparser': end
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.789] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Parser 'parser': start
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.789] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Parser 'parser' entering state 'start'
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.789] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Extracting header 'ethernet'
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.789] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Parser state 'start': key is 0800
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.790] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Bytes parsed: 14
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.790] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.790] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Extracting header 'ipv4'
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.790] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.791] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Bytes parsed: 34
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.791] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Parser 'parser': end
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.791] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Pipeline 'ingress': start
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.791] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(87) Condition "hdr.ipv4.isValid()" (node_2) is true
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.791] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Applying table 'tbl_log_probe89'
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.792] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Looking up key:
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.792] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Table 'tbl_log_probe89': miss
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.792] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Action entry is log_probe89 - 
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.793] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Action log_probe89
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.793] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(89) Primitive shared_counters.read(n, 32w0)
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.793] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Read register 'shared_counters' at index 0 read value 16
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.794] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(90) Primitive n + 1
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.794] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(90) Primitive shared_counters.write(32w0, n + 1)
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.794] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 17
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.794] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.dstAddr
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.795] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.ttl
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.795] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(93) Primitive n
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.795] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(92) Primitive             log_msg(\"INGRESS dst={} ttl={} counter={}\",
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.795] [bmv2] [I] [thread 70266] INGRESS dst=167837953 ttl=32 counter=16
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.796] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Applying table 'MyIngress.ipv4_exact'
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.796] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Looking up key:
+t=0.008 sw=0 flow=0 pkt=8 | * hdr.ipv4.dstAddr    : 0a010101
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.796] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Table 'MyIngress.ipv4_exact': hit with handle 0
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.797] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Dumping entry 0
+t=0.008 sw=0 flow=0 pkt=8 | Match key:
+t=0.008 sw=0 flow=0 pkt=8 | * hdr.ipv4.dstAddr    : EXACT     0a010101
+t=0.008 sw=0 flow=0 pkt=8 | Action entry: MyIngress.forward - 0,
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.797] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Action entry is MyIngress.forward - 0,
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.797] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Action MyIngress.forward
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.798] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(70) Primitive standard_metadata.egress_spec = port
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.798] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(71) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.798] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Applying table 'tbl_log_probe95'
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.799] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Looking up key:
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.799] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Table 'tbl_log_probe95': miss
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.799] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Action entry is log_probe95 - 
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.799] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Action log_probe95
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.799] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.800] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.800] [bmv2] [I] [thread 70266] INGRESS decided egress_spec=0
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.800] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Pipeline 'ingress': end
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.801] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Pipeline 'egress': start
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.801] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(103) Condition "hdr.ipv4.isValid()" (node_8) is true
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.801] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Applying table 'tbl_log_probe106'
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.801] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Looking up key:
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.802] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Table 'tbl_log_probe106': miss
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.802] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Action entry is log_probe106 - 
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.802] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Action log_probe106
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.803] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(106) Primitive shared_counters.read(n, 32w0)
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.803] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Read register 'shared_counters' at index 0 read value 17
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.803] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(107) Primitive n + 1
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.804] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(107) Primitive shared_counters.write(32w0, n + 1)
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.804] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 18
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.804] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(111) Primitive shared_counters.read(e, 32w1)
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.804] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Read register 'shared_counters' at index 1 read value 8
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.805] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(112) Primitive e + 1
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.805] [bmv2] [T] [thread 70266] [8.0] [cxt 0] log_probe.p4(112) Primitive shared_counters.write(32w1, e + 1)
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.805] [bmv2] [T] [thread 70266] [8.0] [cxt 0] Wrote register 'shared_counters' at index 1 with value 9
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.806] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Pipeline 'egress': end
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.806] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Deparser 'deparser': start
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.806] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Deparsing header 'ethernet'
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.806] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Deparsing header 'ipv4'
+t=0.008 sw=0 flow=0 pkt=8 | [12:13:15.806] [bmv2] [D] [thread 70266] [8.0] [cxt 0] Deparser 'deparser': end
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.807] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Parser 'parser': start
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.807] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Parser 'parser' entering state 'start'
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.807] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Extracting header 'ethernet'
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.808] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Parser state 'start': key is 0800
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.808] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Bytes parsed: 14
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.808] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.808] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Extracting header 'ipv4'
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.809] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.809] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Bytes parsed: 34
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.809] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Parser 'parser': end
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.809] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Pipeline 'ingress': start
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.810] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(87) Condition "hdr.ipv4.isValid()" (node_2) is true
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.810] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Applying table 'tbl_log_probe89'
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.810] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Looking up key:
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.810] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Table 'tbl_log_probe89': miss
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.811] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Action entry is log_probe89 - 
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.811] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Action log_probe89
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.811] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(89) Primitive shared_counters.read(n, 32w0)
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.812] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Read register 'shared_counters' at index 0 read value 18
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.812] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(90) Primitive n + 1
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.812] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(90) Primitive shared_counters.write(32w0, n + 1)
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.812] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 19
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.813] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.dstAddr
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.813] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(93) Primitive hdr.ipv4.ttl
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.813] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(93) Primitive n
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.813] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(92) Primitive             log_msg(\"INGRESS dst={} ttl={} counter={}\",
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.814] [bmv2] [I] [thread 70266] INGRESS dst=167837954 ttl=33 counter=18
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.814] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Applying table 'MyIngress.ipv4_exact'
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.814] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Looking up key:
+t=0.009 sw=0 flow=1 pkt=9 | * hdr.ipv4.dstAddr    : 0a010102
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.815] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Table 'MyIngress.ipv4_exact': hit with handle 1
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.815] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Dumping entry 1
+t=0.009 sw=0 flow=1 pkt=9 | Match key:
+t=0.009 sw=0 flow=1 pkt=9 | * hdr.ipv4.dstAddr    : EXACT     0a010102
+t=0.009 sw=0 flow=1 pkt=9 | Action entry: MyIngress.forward - 1,
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.816] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Action entry is MyIngress.forward - 1,
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.816] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Action MyIngress.forward
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.816] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(70) Primitive standard_metadata.egress_spec = port
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.816] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(71) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.817] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Applying table 'tbl_log_probe95'
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.817] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Looking up key:
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.817] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Table 'tbl_log_probe95': miss
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.817] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Action entry is log_probe95 - 
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.818] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Action log_probe95
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.818] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.818] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(95) Primitive             log_msg(\"INGRESS decided egress_spec={}\", {standard_metadata.egress_spec});
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.819] [bmv2] [I] [thread 70266] INGRESS decided egress_spec=1
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.819] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Pipeline 'ingress': end
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.819] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Pipeline 'egress': start
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.819] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(103) Condition "hdr.ipv4.isValid()" (node_8) is true
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.820] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Applying table 'tbl_log_probe106'
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.820] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Looking up key:
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.820] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Table 'tbl_log_probe106': miss
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.821] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Action entry is log_probe106 - 
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.821] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Action log_probe106
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.821] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(106) Primitive shared_counters.read(n, 32w0)
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.821] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Read register 'shared_counters' at index 0 read value 19
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.822] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(107) Primitive n + 1
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.822] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(107) Primitive shared_counters.write(32w0, n + 1)
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.822] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Wrote register 'shared_counters' at index 0 with value 20
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.822] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(111) Primitive shared_counters.read(e, 32w1)
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.823] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Read register 'shared_counters' at index 1 read value 9
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.823] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(112) Primitive e + 1
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.823] [bmv2] [T] [thread 70266] [9.0] [cxt 0] log_probe.p4(112) Primitive shared_counters.write(32w1, e + 1)
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.824] [bmv2] [T] [thread 70266] [9.0] [cxt 0] Wrote register 'shared_counters' at index 1 with value 10
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.824] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Pipeline 'egress': end
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.824] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Deparser 'deparser': start
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.824] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Deparsing header 'ethernet'
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.825] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Deparsing header 'ipv4'
+t=0.009 sw=0 flow=1 pkt=9 | [12:13:15.825] [bmv2] [D] [thread 70266] [9.0] [cxt 0] Deparser 'deparser': end

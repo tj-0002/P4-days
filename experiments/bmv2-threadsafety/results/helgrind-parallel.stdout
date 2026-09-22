@@ -1,0 +1,7 @@
+json=/home/tj/ns-3.39/contrib/p4sim/test/p4src/simple_v1model/simple_v1model.json
+switches=4 packets=40 mode=parallel
+
+[parallel] ok (init on main thread)
+
+
+DONE

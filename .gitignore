@@ -1,0 +1,30 @@
+# ---------------------------------------------------------------------------
+# days/ is a submodule, not ignored -- see .gitmodules. It is a fork of
+# iQua/days (origin: github.com/tj-0002/days) on branch
+# feature/bmv2-integration, and it holds the integration itself:
+#   days/src/p4/        the code
+#   days/artifact/      the sixteen-scenario reproduction package
+#
+# It keeps its own history so upstream can still be merged and so the fork
+# stays a fork, and this repository pins one commit of it. Work can continue in
+# days/ without moving the pin; `git add days` in this repository is what moves
+# it deliberately.
+#
+# The submodule is fetched over https so that a clone needs no ssh key. The
+# local days/ checkout keeps its own ssh remote for pushing; the two are
+# independent.
+#
+# behavioral-model: an upstream checkout and its install prefix, both rebuildable.
+# docs/usage.md section 1.1 has the configure line.
+bmv2-nolog/
+bmv2-nolog-build/
+
+# ---------------------------------------------------------------------------
+# Build output
+experiments/bmv2-threadsafety/harness
+*.o
+*.so
+__pycache__/
+
+# Generated inputs -- regenerate with the script beside them
+experiments/multicore/configs/
