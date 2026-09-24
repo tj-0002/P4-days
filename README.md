@@ -1,6 +1,6 @@
 # P4-Days
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22899521.svg)](https://doi.org/10.5281/zenodo.22899521)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22936768.svg)](https://doi.org/10.5281/zenodo.22936768)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
 
 **Run a real P4 pipeline inside a multicore network simulator.**
@@ -18,7 +18,7 @@ parallelises with it: on a 1,280-switch fat-tree, **5.19x on sixteen workers**
 against unmodified Days' 3.96x.
 
 > 📄 **Paper:** [`paper/P4-Days.pdf`](paper/P4-Days.pdf) ·
-> [doi.org/10.5281/zenodo.22899521](https://doi.org/10.5281/zenodo.22899521)
+> [doi.org/10.5281/zenodo.22936768](https://doi.org/10.5281/zenodo.22936768)
 > — a preprint, not yet peer reviewed. Every number in it can be re-derived
 > from this repository; [`paper/README.md`](paper/README.md) maps each table to
 > the file that produced it.
