@@ -5,9 +5,9 @@ Network Simulator** — [`P4-Days.pdf`](P4-Days.pdf)
 
 A preprint, not yet peer reviewed.
 
-**Cite it as [`10.5281/zenodo.22899521`](https://doi.org/10.5281/zenodo.22899521)**
+**Cite it as [`10.5281/zenodo.22936768`](https://doi.org/10.5281/zenodo.22936768)**
 — that is the concept DOI and always resolves to the newest version. This
-version is archived separately as `10.5281/zenodo.22899522`; use the concept
+version is archived separately as `10.5281/zenodo.22936768`; use the concept
 DOI unless you need to pin this exact text.
 
 `CITATION.cff` in the repository root carries the same thing in
