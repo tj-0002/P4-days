@@ -17,7 +17,7 @@ core**. ns-3's event core is sequential; Days' is not, and the pipeline work
 parallelises with it: on a 1,280-switch fat-tree, **5.19x on sixteen workers**
 against unmodified Days' 3.96x.
 
-> 📄 **Paper:** [`paper/P4-Days.pdf`](paper/P4-Days.pdf) ·
+> 📄 **Paper:** [`paper/P4_Days.pdf`](paper/P4_Days.pdf) ·
 > [doi.org/10.5281/zenodo.22936768](https://doi.org/10.5281/zenodo.22936768)
 > — a preprint, not yet peer reviewed. Every number in it can be re-derived
 > from this repository; [`paper/README.md`](paper/README.md) maps each table to
@@ -196,7 +196,7 @@ Full tables, method and interpretation: [docs/experiments.md](docs/experiments.m
 
 | | |
 |---|---|
-| [paper/P4-Days.pdf](paper/P4-Days.pdf) | the paper, and its LaTeX source |
+| [paper/P4_Days.pdf](paper/P4_Days.pdf) | the paper, and its LaTeX source |
 | [docs/architecture.md](docs/architecture.md) | how BMv2 was put inside Days, and the alternative at each decision |
 | [docs/experiments.md](docs/experiments.md) | what was measured, how, the results, and what they do and do not show |
 | [docs/usage.md](docs/usage.md) | build it, configure it, write a program for it, reproduce the experiments |
